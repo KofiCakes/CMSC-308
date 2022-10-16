@@ -1,0 +1,31 @@
+using System;
+using System.IO;
+
+namespace Sabadera_Act3
+{
+    public class jaz
+    {
+        public static void Main()
+        {
+            double English, Math, Science, MAPEH;
+
+            Console.WriteLine("English: ");
+            English = Convert.ToDouble(Console.ReadLine());
+
+            Console.WriteLine("Math: ");
+            Math = Convert.ToDouble(Console.ReadLine());
+
+            Console.WriteLine("Science: ");
+            Science = Convert.ToDouble(Console.ReadLine());
+
+            Console.WriteLine("MAPEH: ");
+            MAPEH = Convert.ToDouble(Console.ReadLine());
+
+            double result = (English + Math + Science + MAPEH) / 4;
+            Console.WriteLine("Average of {0}, {1}, {2}, {3} is: {4}", English, Math, Science, MAPEH, result);
+
+        }
+    }
+
+}
+
