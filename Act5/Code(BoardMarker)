@@ -1,0 +1,66 @@
+using System;
+using System.Collections.Generic;
+using System.Text;
+
+namespace Intermediate
+{
+        public class BoardMarker
+        {
+
+            public string color = "black";
+            public int content = 20;
+
+
+            public void write(string msg)
+            {
+
+                content = 10;
+                Console.WriteLine(msg);
+                Console.WriteLine("Remaining ink: " + content);
+            Console.ReadKey();
+            }
+
+            public void refill()
+            {
+                content = 20;
+                Console.WriteLine("Remaining ink: " + content);
+            Console.ReadKey();
+            }
+
+            public void changeColor(string userColor)
+            {
+                color = userColor;
+
+                switch (color)
+                {
+                    case "White":
+                        color = "white";
+                        break;
+                    case "Blue":
+                        color = "blue";
+                        break;
+                    case "Red":
+                        color = "red";
+                        break;
+                    default:
+                        color = "white";
+                        break;
+                }
+
+
+                Console.WriteLine("Ink Color: " + color);
+            Console.ReadKey();
+            }
+
+            public void display()
+            {
+                Console.WriteLine("Ink Content: " + content);
+                Console.WriteLine("Ink Color: " + color);
+            Console.ReadKey();
+
+            }
+        }
+
+    }
+
+
