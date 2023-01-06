@@ -1,0 +1,134 @@
+using System;
+using System.Collections.Generic;
+
+namespace Queue
+{
+    class Program
+    {
+        static Queue<string> queue = new Queue<string>(5);
+
+        public static void Main(string[] args)
+        {
+            bool que = true;
+            while (que == true)
+            {
+                Console.WriteLine("*==========*");
+                Console.WriteLine("QUEUE");
+                Console.WriteLine("*==========*");
+                Console.WriteLine("1. ADD");
+                Console.WriteLine("2. REMOVE");
+                Console.WriteLine("3. SEARCH");
+                Console.WriteLine("4. DISPLAY");
+                Console.WriteLine("5. EXIT");
+                Console.Write("ENTER COMMAND: ");
+                try
+                {
+                    int choice = Convert.ToInt32(Console.ReadLine().Trim());
+                    switch (choice)
+                    {
+                        case 1:
+                            Console.Write("ENTER ELEMENT: ");
+                            string element = Console.ReadLine();
+                            AddElement(element);
+                            break;
+                        case 2:
+                            if (queue.Count != 0)
+                            {
+                                Console.WriteLine("FIRST ELEMENT REMOVED: " + queue.Dequeue());
+                                break;
+                            }
+                            else
+                            {
+                                Console.WriteLine("EMPTY!");
+                                break;
+                            }
+                        case 3:
+                            if (queue.Count != 0)
+                            {
+                                Console.Write("SEARCH ELEMENT: ");
+                                element = Console.ReadLine();
+                                SearchElement(element);
+                                break;
+                            }
+                            else
+                            {
+                                Console.WriteLine("EMPTY!");
+                                break;
+                            }
+                        case 4:
+                            DisplayElements();
+                            break;
+                        case 5:
+                            que = false;
+                            Console.WriteLine("CLOSING PROGRAM...");
+                            break;
+                        default:
+                            Console.WriteLine("ENTER NUMBERS 1-5 ONLY");
+                            break;
+                    }
+                    Console.WriteLine();
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e);
+                }
+            }
+        }
+
+        static void AddElement(string elem)
+        {
+            if (String.IsNullOrWhiteSpace(elem) == false)
+            {
+                elem = elem.Trim();
+                if (queue.Count < 5)
+                {
+                    queue.Enqueue(elem);
+                    Console.WriteLine($"{elem} HAS BEEN ADDED.");
+                }
+                else
+                {
+                    Console.WriteLine("QUEUE IS FULL!.");
+                    Console.WriteLine("QUEUE LIMIT: 5");
+                }
+            }
+            else
+            {
+                Console.WriteLine("INVALID INPUT!");
+            }
+        }
+
+        static void SearchElement(string element)
+        {
+            if (String.IsNullOrWhiteSpace(element) == false)
+            {
+                element = element.Trim();
+                if (queue.Contains(element))
+                {
+                    Console.WriteLine($"QUEUE CONTAINS {element}");
+                }
+                else
+                {
+                    Console.WriteLine($"QUEUE DOES NOT CONTAIN {element}");
+                }
+            }
+            else
+            {
+                Console.WriteLine("INVALID INPUT!");
+            }
+        }
+
+        static void DisplayElements()
+        {
+            if (queue.Count != 0)
+            {
+                string s = string.Join(", ", queue);
+                Console.WriteLine($"ELEMENTS IN QUEUE: {s}");
+                Console.WriteLine($"CURRENT QUEUE COUNT: {queue.Count}");
+            }
+            else
+            {
+                Console.WriteLine("QUEUE IS EMPTY!");
+            }
+        }
+    }
+}
